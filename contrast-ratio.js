@@ -16,13 +16,13 @@ $$("[id]").forEach(function(element) {
 	window[element.id] = element;
 });
 
-// Math.floor with precision
-function floor(number, decimals) {
+// Math.round with precision
+function round(number, decimals) {
 	decimals = +decimals || 0;
 
 	var multiplier = Math.pow(10, decimals);
 
-	return Math.floor(number * multiplier) / multiplier;
+	return Math.round(number * multiplier) / multiplier;
 }
 
 var messages = {
@@ -130,15 +130,15 @@ function update() {
 			}
 		}
 
-		$("strong", output).textContent = floor(contrast.ratio, 2);
+		$("strong", output).textContent = round(contrast.ratio, 2);
 
 		preciseContrast.innerHTML = `Precise contrast: ${contrast.ratio - contrast.error}`;
 
 		var error = $(".error", output);
 
 		if (contrast.error) {
-			error.textContent = "±" + floor(contrast.error, 2);
-			error.title = floor(min, 2) + " - " + floor(max, 2);
+			error.textContent = "±" + round(contrast.error, 2);
+			error.title = round(min, 2) + " - " + round(max, 2);
 			preciseContrast.textContent = `${min} - ${max}`;
 		}
 		else {
